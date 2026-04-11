@@ -1,120 +1,58 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Target, Eye, Award, History, Users, Settings } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Target, History, Globe, Shield, CheckCircle2, Factory, Zap, Building2 } from 'lucide-react';
 
 const About = () => {
-    const values = [
-        { title: 'Quality Assurance', icon: Shield, desc: 'We only supply audited, certified products from world-leading engineering manufacturers.' },
-        { title: 'Technical Expertise', icon: Settings, desc: 'Our engineering team provides end-to-end technical support for complex industrial applications.' },
-        { title: 'Reliability', icon: History, desc: 'Nearly two decades of consistent excellence in the Indian industrial supply landscape.' },
-        { title: 'Customer Centric', icon: Users, desc: 'Tailored solutions and priority logistics to meet demanding project timelines.' },
-    ];
-
     return (
-        <div className="pt-32 pb-24 bg-dark">
-            <div className="max-w-7xl mx-auto px-6">
-                {/* Intro */}
-                <div className="max-w-3xl mb-24">
-                    <motion.h1
+        <div className="bg-white min-h-screen">
+            {/* INDUSTRIAL NAVY HEADER */}
+            <section className="bg-[#001C3D] pt-40 pb-24 relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-6xl font-display font-extrabold text-white mb-8"
                     >
-                        Engineering Excellence <br />
-                        <span className="text-primary-500">Since 2006</span>
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-lg text-gray-400 leading-relaxed"
-                    >
-                        Mekano Engineering Pvt. Ltd. was founded with a singular vision: to empower India's growing industrial
-                        sectors with world-class engineering components. From our headquarters in Delhi, we have
-                        grown into a trusted partner for some of the nation's largest manufacturing plants,
-                        refineries, and construction projects.
-                    </motion.p>
-                </div>
-
-                {/* Vision & Mission */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-                    <motion.div
-                        whileHover={{ y: -5 }}
-                        className="p-10 glass-card bg-primary-500/5 border-primary-500/10"
-                    >
-                        <div className="w-12 h-12 rounded-xl bg-primary-500 text-dark flex items-center justify-center mb-6">
-                            <Eye size={28} />
-                        </div>
-                        <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
-                        <p className="text-gray-400 leading-relaxed text-sm">
-                            To be the most reliable and technologically advanced industrial solution provider in the region,
-                            benchmarked against global standards of service and operational excellence.
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        whileHover={{ y: -5 }}
-                        className="p-10 glass-card"
-                    >
-                        <div className="w-12 h-12 rounded-xl bg-gray-100 text-dark flex items-center justify-center mb-6">
-                            <Target size={28} />
-                        </div>
-                        <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
-                        <p className="text-gray-400 leading-relaxed text-sm">
-                            To deliver precision-engineered products that enhance the efficiency, safety, and longevity
-                            of industrial operations, while building long-term value through authorized brand partnerships.
+                        <span className="text-[#FFB302] font-black uppercase tracking-[0.4em] text-[10px] mb-8 block">Our History</span>
+                        <h1 className="text-5xl md:text-9xl font-black text-white mb-8 tracking-tighter uppercase leading-none">
+                            Established <span className="text-[#FFB302]">1998</span>
+                        </h1>
+                        <p className="text-white/50 text-xl font-medium max-w-2xl mx-auto leading-relaxed uppercase tracking-widest">
+                            Built on the pillars of engineering integrity and supply chain precision.
                         </p>
                     </motion.div>
                 </div>
+            </section>
 
-                {/* History / Values */}
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl font-display font-bold text-white mb-4">The Pillars of Our Success</h2>
-                    <div className="w-20 h-1 bg-primary-500 mx-auto"></div>
+            <div className="max-w-7xl mx-auto px-6 py-32">
+                <div className="flex flex-col lg:flex-row items-center gap-20 mb-32">
+                    <div className="lg:w-1/2">
+                        <span className="badge mb-6">Mekano Engineering</span>
+                        <h2 className="text-5xl md:text-7xl font-black text-[#001C3D] mb-8 tracking-tighter uppercase">
+                            Providing <span className="text-[#FFB302] italic">Structural</span> Power
+                        </h2>
+                        <p className="text-xl text-slate-500 mb-10 leading-relaxed font-medium">
+                            With over two decades of uncompromising excellence, we have become the most trusted name in the distribution of industrial valves, pipes, and electrical machinery for India's heavy industry.
+                        </p>
+                        <Link to="/contact" className="primary-button inline-block">Work with us</Link>
+                    </div>
+                    <div className="lg:w-1/2">
+                        <div className="aspect-square bg-slate-50 rounded-[60px] overflow-hidden border-8 border-slate-50 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover" />
+                        </div>
+                    </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {values.map((v, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className="p-8 bg-dark-lighter rounded-2xl border border-white/5 hover:border-primary-500/20 transition-all text-center group"
-                        >
-                            <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-6 text-primary-500 group-hover:bg-primary-500 group-hover:text-dark transition-all duration-300">
-                                <v.icon size={30} />
-                            </div>
-                            <h4 className="text-white font-bold mb-3">{v.title}</h4>
-                            <p className="text-gray-500 text-sm leading-relaxed">{v.desc}</p>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Brand Partnerships */}
-                <div className="mt-32 p-12 glass-card border-none relative overflow-hidden bg-gradient-to-br from-white/5 to-transparent">
-                    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-                        <div className="lg:max-w-xl">
-                            <h3 className="text-3xl font-bold text-white mb-6">Authorized Channel Partner</h3>
-                            <p className="text-gray-400 mb-8 leading-relaxed">
-                                Our legacy is built on the trust of global leaders. We are official stockists for
-                                Shenco Valves, Indef Lifting Equipment, FESTO Pneumatics, and L&T Industrial Products,
-                                ensuring you receive factory-fresh inventory with full manufacturer warranties.
-                            </p>
-                            <div className="flex flex-wrap gap-6 filter grayscale opacity-50 contrast-125">
-                                {['Shenco', 'Indef', 'FESTO', 'L&T', 'Audco', 'Siemens'].map(brand => (
-                                    <span key={brand} className="text-xl font-bold text-white tracking-tighter">{brand}</span>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="w-full lg:w-1/3 aspect-video bg-dark rounded-xl overflow-hidden shadow-2xl">
-                            <img
-                                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="Authorized Partnership"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
+                <div className="grid md:grid-cols-2 gap-10">
+                    <div className="p-16 bg-[#001C3D] rounded-[60px] shadow-2xl">
+                        <Target className="text-[#FFB302] mb-8" size={56} />
+                        <h3 className="text-4xl font-black text-white mb-6 uppercase tracking-tighter">Mission</h3>
+                        <p className="text-white/50 text-lg leading-relaxed font-light italic">To bridge the gap between global manufacturers and India's growing infrastructure needs.</p>
+                    </div>
+                    <div className="p-16 bg-[#FAFAFA] rounded-[60px] border border-slate-100">
+                        <History className="text-[#001C3D] mb-8" size={56} />
+                        <h3 className="text-4xl font-black text-[#001C3D] mb-6 uppercase tracking-tighter">Vision</h3>
+                        <p className="text-slate-400 text-lg leading-relaxed font-medium">Leading the supply chain through ISO-standardized logistics and authorized dealerships.</p>
                     </div>
                 </div>
             </div>

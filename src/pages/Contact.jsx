@@ -1,123 +1,74 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, MessageSquare, Send, Globe } from 'lucide-react';
 
 const Contact = () => {
+    const whatsappLink = "https://wa.me/919911221772?text=Hello MEKANO, I need a technical quote.";
+
     return (
-        <div className="pt-32 pb-24">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                    {/* Info */}
-                    <div>
-                        <h1 className="text-5xl font-display font-bold text-white mb-8">Let's Discuss Your <span className="text-primary-500">Project</span></h1>
-                        <p className="text-gray-400 text-lg mb-12 leading-relaxed">
-                            Have a technical requirement or need a bulk quotation? Our engineering team is ready to assist you
-                            with the right specs and competitive pricing. Reach out to us through any channel below.
+        <div className="bg-[#FAFAFA] min-h-screen">
+            {/* INDUSTRIAL NAVY HEADER */}
+            <section className="bg-[#001C3D] pt-40 pb-24 relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                    >
+                        <span className="text-[#FFB302] font-black uppercase tracking-[0.4em] text-[10px] mb-8 block">Worldwide Desk</span>
+                        <h1 className="text-5xl md:text-9xl font-black text-white mb-8 tracking-tighter uppercase leading-none">
+                            Talk To <span className="text-[#FFB302]">Sales</span>
+                        </h1>
+                        <p className="text-white/50 text-xl font-medium max-w-xl mx-auto uppercase tracking-widest">
+                            Official support for tender submissions and project supply.
                         </p>
+                    </motion.div>
+                </div>
+            </section>
 
-                        <div className="space-y-10">
-                            <div className="flex gap-6">
-                                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary-500 border border-white/5">
-                                    <MapPin size={28} />
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-bold mb-1">Head Office</h4>
-                                    <p className="text-gray-400 text-sm leading-relaxed">1st Floor, Raghushree Market, 21, Ajmeri Gate,<br />Chandni Chowk, Delhi - 110006</p>
-                                </div>
+            <div className="max-w-7xl mx-auto px-6 py-24">
+                <div className="grid lg:grid-cols-5 gap-10 -mt-32 relative z-20">
+                    {/* CONTACT INFO CARDS */}
+                    <div className="lg:col-span-2 space-y-6">
+                        {[
+                            { icon: Phone, title: "Sales Hotline", detail: "+91 9911221772" },
+                            { icon: Mail, title: "Official Email", detail: "info@mekano.in" },
+                            { icon: MapPin, title: "Office Location", detail: "Ajmeri Gate, New Delhi" }
+                        ].map((item, i) => (
+                            <div key={i} className="bg-white p-10 rounded-[40px] shadow-2xl border border-slate-50 group hover:border-[#FFB302]/20 transition-all">
+                                <item.icon className="text-[#FFB302] mb-6" size={32} />
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">{item.title}</p>
+                                <h4 className="text-2xl font-black text-[#001C3D]">{item.detail}</h4>
                             </div>
-
-                            <div className="flex gap-6">
-                                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary-500 border border-white/5">
-                                    <Phone size={28} />
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-bold mb-1">Contact Numbers</h4>
-                                    <p className="text-gray-400 text-sm">+91 9911221772</p>
-                                    <p className="text-gray-400 text-sm">+91 11 23214567</p>
-                                </div>
-                            </div>
-
-                            <div className="flex gap-6">
-                                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary-500 border border-white/5">
-                                    <Mail size={28} />
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-bold mb-1">Email Addresses</h4>
-                                    <p className="text-gray-400 text-sm">info@mekanoengineering.com</p>
-                                    <p className="text-gray-400 text-sm">sales@mekanoengineering.com</p>
-                                </div>
-                            </div>
-
-                            <div className="flex gap-6">
-                                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary-500 border border-white/5">
-                                    <Clock size={28} />
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-bold mb-1">Business Hours</h4>
-                                    <p className="text-gray-400 text-sm italic">Monday - Saturday</p>
-                                    <p className="text-gray-400 text-sm">9:30 AM to 7:00 PM (Sunday Closed)</p>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
 
-                    {/* Form */}
-                    <div className="p-10 glass-card bg-white/5 border-white/10 shadow-2xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/10 blur-3xl rounded-full"></div>
-                        <div className="relative z-10">
-                            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                                <MessageSquare className="text-primary-500" /> Send a Message
-                            </h3>
-                            <form className="space-y-6">
-                                <div className="grid grid-cols-2 gap-6">
-                                    <div className="space-y-2">
-                                        <label className="text-[10px] text-gray-500 font-bold uppercase tracking-widest pl-2">Full Name</label>
-                                        <input type="text" className="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500 transition-all" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label className="text-[10px] text-gray-500 font-bold uppercase tracking-widest pl-2">Company</label>
-                                        <input type="text" className="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500 transition-all" />
-                                    </div>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-[10px] text-gray-500 font-bold uppercase tracking-widest pl-2">Work Email</label>
-                                    <input type="email" className="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500 transition-all" />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-[10px] text-gray-500 font-bold uppercase tracking-widest pl-2">Product Interest</label>
-                                    <select className="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500 transition-all cursor-pointer">
-                                        <option>Industrial Valves</option>
-                                        <option>Automation & Pneumatics</option>
-                                        <option>Pipes & Fittings</option>
-                                        <option>Lifting Equipment</option>
-                                        <option>Other / Bulk Inquiry</option>
-                                    </select>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-[10px] text-gray-500 font-bold uppercase tracking-widest pl-2">Requirements</label>
-                                    <textarea rows="4" className="w-full bg-dark border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500 transition-all"></textarea>
-                                </div>
-
-                                <button type="button" className="w-full glass-button flex items-center justify-center gap-2 mt-4">
-                                    Send Inquiry <Send size={18} />
-                                </button>
-                            </form>
-                        </div>
+                    {/* INQUIRY FORM */}
+                    <div className="lg:col-span-3 bg-white p-12 md:p-20 rounded-[60px] shadow-2xl border border-slate-50">
+                        <h3 className="text-3xl font-black text-[#001C3D] mb-12 uppercase tracking-tighter flex items-center gap-4">
+                            Direct Quote
+                            <span className="h-1 flex-grow bg-slate-50" />
+                        </h3>
+                        <form className="space-y-8">
+                            <div className="grid md:grid-cols-2 gap-8">
+                                <input type="text" placeholder="Full Name" className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-[#001C3D] focus:ring-2 focus:ring-[#FFB302] font-bold" />
+                                <input type="text" placeholder="Contact Number" className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-[#001C3D] focus:ring-2 focus:ring-[#FFB302] font-bold" />
+                            </div>
+                            <textarea placeholder="Technical requirements..." className="w-full bg-slate-50 border-none rounded-3xl py-5 px-8 text-[#001C3D] focus:ring-2 focus:ring-[#FFB302] h-40 font-bold" />
+                            <button className="primary-button w-full py-6 text-xl flex items-center justify-center gap-4">
+                                Submit Inquiry <Send size={24} />
+                            </button>
+                        </form>
                     </div>
                 </div>
 
-                {/* Map Placeholder */}
-                <div className="mt-32 aspect-[21/9] bg-dark-lighter rounded-3xl overflow-hidden border border-white/10 flex items-center justify-center relative grayscale opacity-50 contrast-125">
-                    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=40" className="w-full h-full object-cover" alt="Delhi Location" />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-dark animate-bounce">
-                            <MapPin size={24} />
-                        </div>
-                        <div className="mt-4 px-4 py-2 bg-dark rounded-lg border border-white/10 text-white font-bold">Ajmeri Gate, Delhi</div>
-                    </div>
+                {/* WHATSAPP ACTION */}
+                <div className="mt-24 bg-[#25D366] p-16 md:p-24 rounded-[70px] text-center shadow-2xl shadow-green-500/30 group">
+                    <MessageSquare size={80} className="text-white/30 mx-auto mb-10 group-hover:scale-110 transition-transform" />
+                    <h2 className="text-4xl md:text-7xl font-black text-white mb-8 tracking-tighter uppercase leading-none">Instant <span className="text-[#001C3D]">24/7</span> WhatsApp Chat</h2>
+                    <p className="text-white/80 text-xl font-medium mb-12 max-w-xl mx-auto">Get technical drawings and current stock status within minutes.</p>
+                    <a href={whatsappLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-4 bg-[#001C3D] text-[#FFB302] font-black py-6 px-16 rounded-full text-xl hover:scale-110 transition-all shadow-2xl">
+                        Start Chat Now
+                    </a>
                 </div>
             </div>
         </div>

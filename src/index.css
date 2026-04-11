@@ -1,34 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-[#0a0a0a] text-gray-100;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
-  }
+:root {
+  --primary: #FFB302;
+  /* Vivid Golden Yellow */
+  --primary-dark: #E6A101;
+  --secondary: #001C3D;
+  /* Deep Industrial Navy */
+  --secondary-soft: #082D57;
+  --bg-light: #FFFFFF;
+  --bg-soft: #F1F5F9;
+  --text-main: #001C3D;
+  --text-muted: #64748B;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
-  }
-  
-  .glass-button {
-    @apply px-6 py-3 bg-primary-500 text-dark font-bold rounded-lg 
-           hover:bg-primary-400 transition-all duration-300 transform 
-           hover:scale-105 active:scale-95 shadow-lg shadow-primary-500/20;
-  }
-
   .nav-link {
-    @apply text-gray-400 hover:text-primary-400 transition-colors duration-200 text-sm font-medium;
+    @apply text-[#001C3D]/80 font-bold text-sm hover:text-[#FFB302] transition-all duration-300 relative py-2 uppercase tracking-wide;
   }
 
-  .mega-menu-item {
-    @apply flex items-center p-3 rounded-xl hover:bg-white/5 transition-all duration-200 group;
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-[#FFB302] transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .glass-card {
+    @apply bg-white border border-slate-100 rounded-3xl shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:border-[#FFB302]/20 transition-all duration-500;
+  }
+
+  .glass-button {
+    @apply bg-white border border-slate-200 text-[#001C3D] font-black py-3 px-8 rounded-2xl hover:bg-[#FFB302] hover:border-[#FFB302] hover:text-white transition-all duration-300 shadow-lg shadow-slate-200 uppercase tracking-widest text-[10px];
+  }
+
+  .primary-button {
+    @apply bg-[#FFB302] text-[#001C3D] font-black py-4 px-10 rounded-2xl hover:bg-[#E6A101] transition-all duration-300 shadow-xl shadow-[#FFB302]/20 hover:scale-[1.02] active:scale-[0.98] uppercase tracking-widest text-[11px];
+  }
+
+  .section-title {
+    @apply text-4xl md:text-6xl font-black text-[#001C3D] uppercase tracking-tighter;
+  }
+
+  .badge {
+    @apply text-[9px] font-black uppercase tracking-[0.3em] px-5 py-2 rounded-full bg-[#001C3D] text-[#FFB302] border border-[#001C3D];
   }
 }
 
@@ -38,23 +74,18 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-dark;
+  background: #F1F5F9;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-dark-lightest rounded-full border-2 border-dark;
+  background: #CBD5E1;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-500/50;
+  background: #94A3B8;
 }
 
-/* Animations */
-.hero-gradient {
-  background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.08), transparent 40%),
-              radial-gradient(circle at bottom left, rgba(251, 191, 36, 0.05), transparent 40%);
-}
-
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-300 via-primary-500 to-primary-600;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
 }
