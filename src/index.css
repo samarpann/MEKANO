@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0a0a0a] text-gray-100;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+  
+  .glass-button {
+    @apply px-6 py-3 bg-primary-500 text-dark font-bold rounded-lg 
+           hover:bg-primary-400 transition-all duration-300 transform 
+           hover:scale-105 active:scale-95 shadow-lg shadow-primary-500/20;
+  }
+
+  .nav-link {
+    @apply text-gray-400 hover:text-primary-400 transition-colors duration-200 text-sm font-medium;
+  }
+
+  .mega-menu-item {
+    @apply flex items-center p-3 rounded-xl hover:bg-white/5 transition-all duration-200 group;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dark-lightest rounded-full border-2 border-dark;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-500/50;
+}
+
+/* Animations */
+.hero-gradient {
+  background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.08), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(251, 191, 36, 0.05), transparent 40%);
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-300 via-primary-500 to-primary-600;
+}
