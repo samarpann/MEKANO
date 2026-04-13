@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, MapPin, Clock, Phone, Settings, Mail } from 'lucide-react';
@@ -9,7 +9,11 @@ const Navbar = () => {
     const [activeCategory, setActiveCategory] = useState(categories?.[0] || null);
     const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [navBottom, setNavBottom] = useState(80);
+    const totalProducts = categories.reduce((acc, cat) => acc + cat.products.length, 0);
     const location = useLocation();
+    const closeTimer = useRef(null);
+    const navRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -17,10 +21,39 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Track navbar height so the fixed dropdown aligns directly below it
+    useEffect(() => {
+        const updateNavBottom = () => {
+            if (navRef.current) {
+                setNavBottom(navRef.current.getBoundingClientRect().bottom);
+            }
+        };
+        updateNavBottom();
+        window.addEventListener('scroll', updateNavBottom);
+        window.addEventListener('resize', updateNavBottom);
+        return () => {
+            window.removeEventListener('scroll', updateNavBottom);
+            window.removeEventListener('resize', updateNavBottom);
+        };
+    }, [scrolled]);
+
     useEffect(() => {
         setIsOpen(false);
         setIsMegaMenuOpen(false);
     }, [location]);
+
+    const handleMouseEnterProducts = () => {
+        clearTimeout(closeTimer.current);
+        setIsMegaMenuOpen(true);
+    };
+
+    const handleMouseLeaveAll = () => {
+        closeTimer.current = setTimeout(() => setIsMegaMenuOpen(false), 200);
+    };
+
+    const handleMouseEnterMenu = () => {
+        clearTimeout(closeTimer.current);
+    };
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -31,8 +64,8 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="fixed w-full z-50 transition-all duration-500">
-            {/* TOP BAR - INSPIRED BY REF SCREENSHOT */}
+        <nav ref={navRef} className="fixed w-full z-50 transition-all duration-500">
+            {/* TOP BAR */}
             <div className={`hidden lg:block bg-[#001C3D] py-2 border-b border-white/5 transition-all duration-500 ${scrolled ? 'h-0 py-0 opacity-0 overflow-hidden' : 'h-auto opacity-100'}`}>
                 <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
                     <div className="flex items-center space-x-8">
@@ -42,7 +75,7 @@ const Navbar = () => {
                         </div>
                         <div className="flex items-center gap-2">
                             <Clock size={12} className="text-[#FFB302]" />
-                            <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
+                            <span>Mon - Sat: 9:00 AM - 5:00 PM</span>
                         </div>
                     </div>
                     <div className="flex items-center space-x-6">
@@ -60,15 +93,16 @@ const Navbar = () => {
 
             {/* MAIN NAV */}
             <div className={`transition-all duration-500 ${scrolled ? 'bg-[#001C3D] shadow-2xl py-3' : 'bg-[#001C3D]/95 backdrop-blur-md py-5'}`}>
-                <div className="max-w-7xl mx-auto px-6 relative">
+                <div className="max-w-7xl mx-auto px-6">
                     <div className="flex items-center justify-between">
-                        <Link to="/" className="flex items-center space-x-3 group bg-white p-2 px-4 rounded-xl shadow-lg">
-                            <div className="w-8 h-8 bg-[#001C3D] rounded-lg flex items-center justify-center text-[#FFB302]">
-                                <Settings size={20} />
-                            </div>
-                            <div className="flex flex-col">
-                                <span className="text-lg font-black text-[#001C3D] leading-none tracking-tighter">MEKANO</span>
-                                <span className="text-[8px] text-[#001C3D]/60 font-black tracking-widest leading-none">ENGINEERING</span>
+                        {/* Logo */}
+                        <Link to="/" className="flex items-center group">
+                            <div className="bg-white p-2 rounded-xl shadow-lg border border-slate-100 h-20 w-56 flex items-center justify-center">
+                                <img 
+                                    src="https://mekanoengineers.netlify.app/assets/mekano-wihout-bg.png" 
+                                    alt="MEKANO Logo"
+                                    className="h-16 w-auto object-contain transform scale-[1.35]"
+                                />
                             </div>
                         </Link>
 
@@ -84,64 +118,15 @@ const Navbar = () => {
                                 </Link>
                             ))}
 
+                            {/* Products trigger */}
                             <div
-                                className="group h-full flex items-center"
-                                onMouseEnter={() => setIsMegaMenuOpen(true)}
-                                onMouseLeave={() => setIsMegaMenuOpen(false)}
+                                onMouseEnter={handleMouseEnterProducts}
+                                onMouseLeave={handleMouseLeaveAll}
                             >
-                                <button className="flex items-center space-x-1 text-white/80 hover:text-[#FFB302] text-[11px] font-black uppercase tracking-widest cursor-pointer py-4">
+                                <button className={`flex items-center space-x-1 text-[11px] font-black uppercase tracking-widest cursor-pointer py-4 transition-colors ${isMegaMenuOpen ? 'text-[#FFB302]' : 'text-white/80 hover:text-[#FFB302]'}`}>
                                     <span>Products</span>
-                                    <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                                    <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
                                 </button>
-
-                                {/* MEGA MENU - CUSTOM FOR NEW NAVY THEME */}
-                                <AnimatePresence>
-                                    {isMegaMenuOpen && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 15 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: 15 }}
-                                            className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[1000px] bg-white border border-slate-100 rounded-[32px] shadow-[0_40px_80px_-15px_rgba(0,0,10,0.2)] overflow-hidden"
-                                        >
-                                            <div className="flex h-[520px]">
-                                                <div className="w-1/3 bg-[#001C3D] p-10">
-                                                    <p className="text-[10px] font-black text-[#FFB302] uppercase tracking-[0.3em] mb-8">Supply Catalog</p>
-                                                    <div className="space-y-2">
-                                                        {categories.map((cat) => (
-                                                            <button
-                                                                key={cat.id}
-                                                                onMouseEnter={() => setActiveCategory(cat)}
-                                                                className={`w-full text-left px-6 py-4 rounded-2xl transition-all duration-300 ${activeCategory?.id === cat.id ? 'bg-[#FFB302] text-[#001C3D] shadow-xl' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
-                                                            >
-                                                                <span className="text-xs font-black uppercase tracking-tighter">{cat.name}</span>
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                                <div className="w-2/3 p-12 bg-white overflow-y-auto custom-scrollbar">
-                                                    {activeCategory && (
-                                                        <div key={activeCategory.id}>
-                                                            <div className="flex items-center justify-between mb-10 pb-6 border-b border-slate-50">
-                                                                <h3 className="text-3xl font-black text-[#001C3D]">{activeCategory.name}</h3>
-                                                                <Link to={`/products?category=${activeCategory.id}`} className="text-[#FFB302] text-[10px] font-black uppercase tracking-[0.2em] hover:scale-110 transition-transform">View All</Link>
-                                                            </div>
-                                                            <div className="grid grid-cols-2 gap-8">
-                                                                {activeCategory.products.slice(0, 4).map((product) => (
-                                                                    <Link key={product.id} to={`/products/${product.id}`} className="group flex gap-5 items-center p-4 rounded-3xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
-                                                                        <div className="h-16 w-16 rounded-2xl bg-white border border-slate-100 overflow-hidden flex-shrink-0">
-                                                                            <img src={product.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
-                                                                        </div>
-                                                                        <h4 className="text-[11px] font-black text-[#001C3D] uppercase tracking-tighter line-clamp-2">{product.name}</h4>
-                                                                    </Link>
-                                                                ))}
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
                             </div>
 
                             {navLinks.slice(3).map((link) => (
@@ -166,6 +151,115 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+
+            {/*
+                MEGA MENU — uses position:fixed so it is ALWAYS centered
+                relative to the viewport, never affected by parent containers.
+                Top is measured from the actual bottom of the navbar via useRef.
+            */}
+            <AnimatePresence>
+                {isMegaMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.18, ease: 'easeOut' }}
+                        onMouseEnter={null}
+                        onMouseLeave={null}
+                        style={{
+                            position: 'fixed',
+                            top: navBottom,
+                            left: 0,
+                            right: 0,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            padding: '0 16px',
+                            zIndex: 9999,
+                            pointerEvents: 'none' // Key: outer wrapper is invisible to mouse
+                        }}
+                    >
+                        <div 
+                            onMouseEnter={handleMouseEnterMenu}
+                            onMouseLeave={handleMouseLeaveAll}
+                            className="w-[860px] max-w-[calc(100vw-32px)] bg-white border border-slate-100 rounded-3xl shadow-[0_32px_64px_-12px_rgba(0,0,20,0.25)] overflow-hidden pointer-events-auto"
+                        >
+                            <div className="flex h-[480px]">
+                                {/* Left: Category list */}
+                                <div className="w-[280px] flex-shrink-0 bg-[#001C3D] p-8 flex flex-col justify-center">
+                                    <div className="flex items-center justify-between mb-6">
+                                        <p className="text-[10px] font-black text-[#FFB302] uppercase tracking-[0.3em]">Supply Catalog</p>
+                                        <span className="bg-white/10 text-white/50 text-[9px] px-2 py-0.5 rounded-full font-bold">{totalProducts} Total</span>
+                                    </div>
+                                    <div className="space-y-1">
+                                        {categories.map((cat) => (
+                                            <button
+                                                key={cat.id}
+                                                onMouseEnter={() => setActiveCategory(cat)}
+                                                className={`w-full text-left px-5 py-3 rounded-xl transition-all duration-200 flex items-center justify-between group/btn ${
+                                                    activeCategory?.id === cat.id
+                                                        ? 'bg-[#FFB302] text-[#001C3D] shadow-lg'
+                                                        : 'text-white/60 hover:text-white hover:bg-white/10'
+                                                }`}
+                                            >
+                                                <span className="text-[11px] font-black uppercase tracking-tight">{cat.name}</span>
+                                                <span className={`text-[9px] font-black px-1.5 py-0.5 rounded ${
+                                                    activeCategory?.id === cat.id ? 'bg-[#001C3D]/10' : 'bg-white/5 text-white/40'
+                                                }`}>
+                                                    {cat.products.length}
+                                                </span>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Right: Product grid — vertically + horizontally centered */}
+                                <div className="flex-1 flex items-center justify-center p-8 bg-white">
+                                    <AnimatePresence mode="wait">
+                                        {activeCategory && (
+                                            <motion.div
+                                                key={activeCategory.id}
+                                                initial={{ opacity: 0, x: 10 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                exit={{ opacity: 0, x: -10 }}
+                                                transition={{ duration: 0.15 }}
+                                                className="w-full"
+                                            >
+                                                <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+                                                    <h3 className="text-xl font-black text-[#001C3D]">{activeCategory.name}</h3>
+                                                    <Link
+                                                        to={`/products?category=${activeCategory.id}`}
+                                                        className="text-[#FFB302] text-[10px] font-black uppercase tracking-[0.2em] hover:opacity-70 transition-opacity"
+                                                    >
+                                                        View All →
+                                                    </Link>
+                                                </div>
+                                                <div className="grid grid-cols-2 gap-4">
+                                                    {activeCategory.products.slice(0, 6).map((product) => (
+                                                        <Link
+                                                            key={product.id}
+                                                            to={`/products/${product.id}`}
+                                                            className="group flex gap-4 items-center p-3 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-200"
+                                                        >
+                                                            <div className="h-14 w-14 rounded-xl bg-slate-50 border border-slate-100 overflow-hidden flex-shrink-0">
+                                                                <img
+                                                                    src={product.image}
+                                                                    alt={product.name}
+                                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                                                />
+                                                            </div>
+                                                            <h4 className="text-[11px] font-black text-[#001C3D] uppercase tracking-tight leading-tight line-clamp-2">{product.name}</h4>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Mobile Nav */}
             <AnimatePresence>

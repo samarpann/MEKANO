@@ -3,7 +3,35 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, MessageSquare, Send, Globe } from 'lucide-react';
 
 const Contact = () => {
+    const [result, setResult] = React.useState("");
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
     const whatsappLink = "https://wa.me/919911221772?text=Hello MEKANO, I need a technical quote.";
+
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        setIsSubmitting(true);
+        setResult("Sending...");
+        const formData = new FormData(event.target);
+
+        // Access Key for Web3Forms (User should replace this with their actual key)
+        formData.append("access_key", "c911737e-6f81-4f81-8b43-2394541f6e24"); 
+
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            setResult("Inquiry Sent Successfully!");
+            event.target.reset();
+        } else {
+            console.log("Error", data);
+            setResult(data.message);
+        }
+        setIsSubmitting(false);
+    };
 
     return (
         <div className="bg-[#FAFAFA] min-h-screen">
@@ -48,14 +76,18 @@ const Contact = () => {
                             Direct Quote
                             <span className="h-1 flex-grow bg-slate-50" />
                         </h3>
-                        <form className="space-y-8">
+                        <form onSubmit={onSubmit} className="space-y-8">
                             <div className="grid md:grid-cols-2 gap-8">
-                                <input type="text" placeholder="Full Name" className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-[#001C3D] focus:ring-2 focus:ring-[#FFB302] font-bold" />
-                                <input type="text" placeholder="Contact Number" className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-[#001C3D] focus:ring-2 focus:ring-[#FFB302] font-bold" />
+                                <input type="text" name="name" required placeholder="Full Name" className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-[#001C3D] focus:ring-2 focus:ring-[#FFB302] font-bold" />
+                                <input type="text" name="phone" required placeholder="Contact Number" className="w-full bg-slate-50 border-none rounded-2xl py-5 px-8 text-[#001C3D] focus:ring-2 focus:ring-[#FFB302] font-bold" />
                             </div>
-                            <textarea placeholder="Technical requirements..." className="w-full bg-slate-50 border-none rounded-3xl py-5 px-8 text-[#001C3D] focus:ring-2 focus:ring-[#FFB302] h-40 font-bold" />
-                            <button className="primary-button w-full py-6 text-xl flex items-center justify-center gap-4">
-                                Submit Inquiry <Send size={24} />
+                            <textarea name="message" required placeholder="Technical requirements..." className="w-full bg-slate-50 border-none rounded-3xl py-5 px-8 text-[#001C3D] focus:ring-2 focus:ring-[#FFB302] h-40 font-bold" />
+                            <button 
+                                disabled={isSubmitting}
+                                className={`primary-button w-full py-6 text-xl flex items-center justify-center gap-4 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                            >
+                                {isSubmitting ? 'Sending...' : result || 'Submit Inquiry'} 
+                                {!isSubmitting && <Send size={24} />}
                             </button>
                         </form>
                     </div>

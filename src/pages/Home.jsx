@@ -42,7 +42,7 @@ const Home = () => {
     return (
         <div className="bg-white min-h-screen">
             {/* POWERFUL HERO AREA */}
-            <section className="relative h-screen min-h-[700px] overflow-hidden flex items-center bg-[#001C3D]">
+            <section className="relative h-[650px] overflow-hidden flex items-center bg-[#001C3D]">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentSlide}
@@ -76,7 +76,7 @@ const Home = () => {
                     <ChevronRight size={24} />
                 </button>
 
-                <div className="relative h-full max-w-7xl mx-auto px-6 flex flex-col justify-center z-20 w-full">
+                <div className="relative h-full max-w-7xl mx-auto px-6 flex flex-col justify-center z-20 w-full pt-20">
                     <motion.div
                         initial={{ y: 30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
@@ -86,7 +86,7 @@ const Home = () => {
                         <motion.span className="bg-[#FFB302] text-[#001C3D] font-black uppercase tracking-[0.4em] text-[8px] px-5 py-2 rounded-full mb-8 inline-block shadow-2xl">
                             Engineering Desk since 1998
                         </motion.span>
-                        <h1 className="text-5xl md:text-8xl font-black text-white mb-6 uppercase tracking-tighter leading-[0.95]">
+                        <h1 className="text-4xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter leading-[0.95]">
                             {slides[currentSlide].title}
                         </h1>
                         <p className="text-lg text-white/90 mb-10 leading-relaxed max-w-lg font-bold uppercase tracking-widest text-[11px]">
@@ -102,7 +102,7 @@ const Home = () => {
                 </div>
 
                 {/* SLIDE INDICATORS */}
-                <div className="absolute bottom-16 left-1/2 -translate-x-1/2 md:left-24 md:translate-x-0 flex items-center space-x-12 z-30">
+                <div className="absolute bottom-28 left-1/2 -translate-x-1/2 md:left-24 md:translate-x-0 flex items-center space-x-12 z-30">
                     <div className="flex space-x-3">
                         {slides.map((_, i) => (
                             <button
