@@ -79,9 +79,9 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className="flex items-center space-x-6">
-                        <a href="mailto:info@mekano.in" className="flex items-center gap-2 hover:text-[#FFB302] transition-colors">
+                        <a href="mailto:info@mekanoengineering.com" className="flex items-center gap-2 hover:text-[#FFB302] transition-colors">
                             <Mail size={12} className="text-[#FFB302]" />
-                            <span>info@mekano.in</span>
+                            <span>info@mekanoengineering.com</span>
                         </a>
                         <div className="flex items-center gap-2">
                             <Phone size={12} className="text-[#FFB302]" />
@@ -185,7 +185,7 @@ const Navbar = () => {
                         >
                             <div className="flex h-[480px]">
                                 {/* Left: Category list */}
-                                <div className="w-[280px] flex-shrink-0 bg-[#001C3D] p-8 flex flex-col justify-center">
+                                <div className="w-[280px] flex-shrink-0 bg-[#001C3D] p-8 flex flex-col justify-start overflow-y-auto">
                                     <div className="flex items-center justify-between mb-6">
                                         <p className="text-[10px] font-black text-[#FFB302] uppercase tracking-[0.3em]">Supply Catalog</p>
                                         <span className="bg-white/10 text-white/50 text-[9px] px-2 py-0.5 rounded-full font-bold">{totalProducts} Total</span>
@@ -213,7 +213,7 @@ const Navbar = () => {
                                 </div>
 
                                 {/* Right: Product grid — vertically + horizontally centered */}
-                                <div className="flex-1 flex items-center justify-center p-8 bg-white">
+                                <div className="flex-1 flex items-start justify-center p-8 bg-white overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
                                     <AnimatePresence mode="wait">
                                         {activeCategory && (
                                             <motion.div
@@ -234,7 +234,7 @@ const Navbar = () => {
                                                     </Link>
                                                 </div>
                                                 <div className="grid grid-cols-2 gap-4">
-                                                    {activeCategory.products.slice(0, 6).map((product) => (
+                                                    {activeCategory.products.map((product) => (
                                                         <Link
                                                             key={product.id}
                                                             to={`/products/${product.id}`}

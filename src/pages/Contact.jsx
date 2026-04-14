@@ -59,7 +59,7 @@ const Contact = () => {
                     <div className="lg:col-span-2 space-y-6">
                         {[
                             { icon: Phone, title: "Sales Hotline", detail: "+91 9911221772" },
-                            { icon: Mail, title: "Official Email", detail: "info@mekano.in" },
+                            { icon: Mail, title: "Official Email", detail: "info@mekanoengineering.com" },
                             { icon: MapPin, title: "Office Location", detail: "Ajmeri Gate, New Delhi" }
                         ].map((item, i) => (
                             <div key={i} className="bg-white p-10 rounded-[40px] shadow-2xl border border-slate-50 group hover:border-[#FFB302]/20 transition-all">

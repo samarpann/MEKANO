@@ -9,6 +9,11 @@ import { Link } from 'react-router-dom';
 const Partners = () => {
     const brands = [
         { 
+            name: "Sant", 
+            logo: "https://www.santvalves.com/apple-touch-icon.png",
+            description: "Trusted name in industrial valves and fittings" 
+        },
+        { 
             name: "Shenco", 
             logo: "https://mekanoengineers.netlify.app/assets/partener-logo/authorised-channel-partener/shenco.png",
             description: "Authorised Specialist for flow control solutions" 
@@ -17,6 +22,26 @@ const Partners = () => {
             name: "Havells", 
             logo: "https://mekanoengineers.netlify.app/assets/partener-logo/authorised-channel-partener/havells.png",
             description: "Industrial motors and electrical components" 
+        },
+        { 
+            name: "Diamond", 
+            logo: "https://mekanoengineers.netlify.app/assets/partener-logo/authorised-channel-partener/diamond.jpg",
+            description: "Superior industrial chains and transmission parts" 
+        },
+        { 
+            name: "Racer", 
+            logo: "https://racervalves.com/wp-content/uploads/2024/10/logo-web.svg",
+            description: "High-quality industrial valves and flow control solutions" 
+        },
+        { 
+            name: "Sap", 
+            logo: "https://mekanoengineers.netlify.app/assets/partener-logo/authorised-channel-partener/sap.png",
+            description: "Specialized engineering components" 
+        },
+        { 
+            name: "UPC", 
+            logo: "https://unitechmeter.com/img/upc-logo-cropped.svg",
+            description: "Innovative instrumentation and industrial piping systems" 
         },
         { 
             name: "Spitmaan", 
@@ -29,29 +54,9 @@ const Partners = () => {
             description: "Premium industrial gearboxes and helical gears" 
         },
         { 
-            name: "Sant", 
-            logo: "https://mekanoengineers.netlify.app/assets/partener-logo/authorised-channel-partener/sant.png",
-            description: "Trusted name in industrial valves and fittings" 
-        },
-        { 
-            name: "Diamond", 
-            logo: "https://mekanoengineers.netlify.app/assets/partener-logo/authorised-channel-partener/diamond.jpg",
-            description: "Superior industrial chains and transmission parts" 
-        },
-        { 
-            name: "Sap", 
-            logo: "https://mekanoengineers.netlify.app/assets/partener-logo/authorised-channel-partener/sap.png",
-            description: "Specialized engineering components" 
-        },
-        { 
             name: "Jindal Hisar", 
             logo: "https://mekanoengineers.netlify.app/assets/partener-logo/authorised-channel-partener/jindal-hisar.png",
             description: "Premium GI and CS pipes manufacturer" 
-        },
-        { 
-            name: "Casco", 
-            logo: "https://mekanoengineers.netlify.app/assets/partener-logo/authorised-channel-partener/casco.png",
-            description: "Material handling and lifting equipment" 
         }
     ];
 

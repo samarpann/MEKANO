@@ -17,7 +17,7 @@ const Footer = () => {
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed">
                             Mekano Engineering Pvt. Ltd. is a leading industrial supply company in Delhi,
-                            providing precision-engineered valves, automation, and power transmission solutions since 2006.
+                            providing precision-engineered valves, automation, and power transmission solutions since 1998.
                         </p>
                         <div className="flex gap-4">
                             {[Facebook, Linkedin, Twitter].map((Icon, i) => (
@@ -87,7 +87,7 @@ const Footer = () => {
 
                 <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                     <p className="text-gray-500 text-xs text-center md:text-left">
-                        © 2006-2026 Mekano Engineering Pvt. Ltd. All rights reserved. GSTIN: 27AAECM6645Q1Z3
+                        © 1998-2026 Mekano Engineering Pvt. Ltd. All rights reserved. GSTIN: 27AAECM6645Q1Z3
                     </p>
                     <div className="flex gap-8 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
                         <a href="#" className="hover:text-primary-500">Privacy Policy</a>

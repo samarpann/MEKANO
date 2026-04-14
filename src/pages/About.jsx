@@ -47,12 +47,29 @@ const About = () => {
                     <div className="p-16 bg-[#001C3D] rounded-[60px] shadow-2xl">
                         <Target className="text-[#FFB302] mb-8" size={56} />
                         <h3 className="text-4xl font-black text-white mb-6 uppercase tracking-tighter">Mission</h3>
-                        <p className="text-white/50 text-lg leading-relaxed font-light italic">To bridge the gap between global manufacturers and India's growing infrastructure needs.</p>
+                        <div className="space-y-4">
+                            <p className="text-white/70 text-lg leading-relaxed font-light italic">
+                                At Mekano Engineering Pvt. Ltd., our mission is to deliver high-quality industrial valves, piping solutions, and engineering components that meet the evolving demands of heavy industries.
+                            </p>
+                            <p className="text-white/70 text-lg leading-relaxed font-light italic">
+                                We are committed to providing trusted brands, reliable performance, and timely supply, ensuring smooth and efficient operations for our clients across sectors like steel, cement, chemical, and infrastructure.
+                            </p>
+                            <p className="text-white/70 text-lg leading-relaxed font-light italic">
+                                Through a customer-centric approach, we aim to build long-term relationships based on quality, integrity, and service excellence.
+                            </p>
+                        </div>
                     </div>
                     <div className="p-16 bg-[#FAFAFA] rounded-[60px] border border-slate-100">
                         <History className="text-[#001C3D] mb-8" size={56} />
                         <h3 className="text-4xl font-black text-[#001C3D] mb-6 uppercase tracking-tighter">Vision</h3>
-                        <p className="text-slate-400 text-lg leading-relaxed font-medium">Leading the supply chain through ISO-standardized logistics and authorized dealerships.</p>
+                        <div className="space-y-4">
+                            <p className="text-slate-500 text-lg leading-relaxed font-medium">
+                                Our vision is to become a leading and most trusted supplier of industrial valves and engineering solutions in India, recognized for our quality standards, product range, and dependable service.
+                            </p>
+                            <p className="text-slate-500 text-lg leading-relaxed font-medium">
+                                We aspire to continuously expand our portfolio with advanced and innovative products, supporting industrial growth while maintaining safety, efficiency, and sustainability at every level.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
