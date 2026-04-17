@@ -275,7 +275,11 @@ const Navbar = () => {
                             <button onClick={() => setIsOpen(false)} className="text-white"><X size={32} /></button>
                         </div>
                         <div className="flex flex-col space-y-8">
-                            {navLinks.map((link) => (
+                            {navLinks.slice(0, 3).map((link) => (
+                                <Link key={link.name} to={link.path} className="text-4xl font-black text-white/40 hover:text-[#FFB302] transition-colors">{link.name}</Link>
+                            ))}
+                            <Link to="/products" className="text-4xl font-black text-white/40 hover:text-[#FFB302] transition-colors">Products</Link>
+                            {navLinks.slice(3).map((link) => (
                                 <Link key={link.name} to={link.path} className="text-4xl font-black text-white/40 hover:text-[#FFB302] transition-colors">{link.name}</Link>
                             ))}
                         </div>
