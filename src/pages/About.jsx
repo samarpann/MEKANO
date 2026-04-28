@@ -15,7 +15,7 @@ const About = () => {
                     >
                         <span className="text-[#FFB302] font-black uppercase tracking-[0.4em] text-[10px] mb-8 block">Our History</span>
                         <h1 className="text-5xl md:text-9xl font-black text-white mb-8 tracking-tighter uppercase leading-none">
-                            Established <span className="text-[#FFB302]">1998</span>
+                            Established <span className="text-[#FFB302]">2017</span>
                         </h1>
                         <p className="text-white/50 text-xl font-medium max-w-2xl mx-auto leading-relaxed uppercase tracking-widest">
                             Built on the pillars of engineering integrity and supply chain precision.

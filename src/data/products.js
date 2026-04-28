@@ -2,15 +2,12 @@ export const categories = [
     {
         id: "industrial-valves",
         name: "Industrial Valves",
-        subCategories: ["All", "Gate Valves", "Ball Valves", "Butterfly Valves", "Check Valves", "Plug Valves", "Globe Valves", "Safety Valves", "Steam Traps", "Strainers"],
-        description: "Gate, Ball, Butterfly, Globe & Plug Valves - Shenco, Audco, Sant, L&T, Casco. Bulk supply with GST invoice from Delhi.",
+        subCategories: ["All", "Ball Valves", "Butterfly Valves", "Check Valves", "Globe Valves", "Safety Valves", "Steam Traps", "Strainers"],
+        description: "Ball, Butterfly, Globe, Safety Valves & Strainers - Sant, L&T, Casco. Bulk supply with GST invoice from Delhi.",
         products: [
-            { id: 1, name: "Shenco Gate Valve", sub: "Gate Valves", image: "/assets/products/Gate Valve.jpg.jpeg", description: "High-integrity gate valve for isolation service." },
-            { id: 2, name: "Audco Plug Valve", sub: "Plug Valves", image: "https://mekanoengineers.netlify.app/assets/products/audco-lubricated-plug-valve-500x500.jpg", description: "Precision plug valve for tight shut-off." },
             { id: 3, name: "Sant Ball Valve", sub: "Ball Valves", image: "/assets/products/CI Ball Valve.jpg.jpeg", description: "Trusted Sant brand ball valve for industrial flow." },
             { id: 4, name: "L&T Butterfly Valve", sub: "Butterfly Valves", image: "https://mekanoengineers.netlify.app/assets/products/lt-butterfly-valve-500x500.jpg", description: "Durable blue butterfly valve for fluid regulation." },
             { id: 5, name: "Casco Globe Valve", sub: "Globe Valves", image: "/assets/products/Cast Steel Globe Valve.jpg.jpeg", description: "Reliable globe valve for throttling service." },
-            { id: 6, name: "Valve Manifold Assembly", sub: "All", image: "https://mekanoengineers.netlify.app/assets/products/valve-manifold.webp", description: "Multi-port manifold assembly for process control." },
             { id: 7, name: "BFV Foot Valve", sub: "Butterfly Valves", image: "/assets/products/BFV Foot Valve.jpg.jpeg", description: "Butterfly type Foot Valve for pump suction lines." },
             { id: 8, name: "Brass Balancing Valve", sub: "Globe Valves", image: "/assets/products/Brass Balancing Valve.jpg.jpeg", description: "Precision Brass Balancing Valve for HVAC and water systems." },
             { id: 31, name: "Brass Pressure Reducing Valve", sub: "Safety Valves", image: "/assets/products/Brass Pressure Reducing Valve.jpg.jpeg", description: "Reliable Brass PRV for maintaining constant downstream pressure." },
@@ -30,7 +27,10 @@ export const categories = [
             { id: 45, name: "Check Valve", sub: "Check Valves", image: "/assets/products/Check Valve.jpg.jpeg", description: "Non-return Check Valve to prevent backflow." },
             { id: 46, name: "CI Ball Valve", sub: "Ball Valves", image: "/assets/products/CI Ball Valve.jpg.jpeg", description: "Durable Cast Iron Ball Valve for industrial fluid control." },
             { id: 47, name: "SS Ball Valve", sub: "Ball Valves", image: "/assets/products/SS Ball Valve.jpg.jpeg", description: "Corrosion-resistant Stainless Steel Ball Valve." },
-            { id: 48, name: "Solenoid Valve", sub: "Ball Valves", image: "/assets/products/Solenoid Valve.jpeg", description: "Electrically controlled Solenoid Valve for automated flow." },
+            { id: 19, name: "Racer SS Reflex Sight Glass", sub: "All", image: "https://mekanoengineers.netlify.app/assets/products/racer-ss-view-sight-glass-500x500.jpg", description: "Sight glass for visual flow monitoring." },
+            { id: 23, name: "Bronze Sleeve Packed Water Level Gauge", sub: "All", image: "/assets/products/Bronze Sleeve Packed Water Level Gauge.jpg.jpeg", description: "Visual level indicator." },
+            { id: 69, name: "Cast Steel Sleeve Packed Water Level Gauge", sub: "All", image: "/assets/products/Cast Steel Sleeve Packed Water Level Gauge.jpg.jpeg", description: "High-pressure level gauge." },
+            { id: 57, name: "Moisture Separator", sub: "All", image: "/assets/products/Moisture Separator.jpg.jpeg", description: "Separates moisture from compressed air lines." },
         ]
     },
     {
@@ -60,7 +60,9 @@ export const categories = [
             { id: 49, name: "FESTO FRL Unit", sub: "FRL Units", image: "/assets/products/FRL.jpeg", description: "Filter-Regulator-Lubricator unit for pneumatic machine protection." },
             { id: 55, name: "Solenoid Valve Manifold", sub: "Fittings", image: "https://mekanoengineers.netlify.app/assets/products/solenoid-valve.jpeg", description: "Multi-valve manifold for precise pneumatic control." },
             { id: 56, name: "Hand Lever Valve", sub: "FRL Units", image: "/assets/products/Hand Lever.jpeg", description: "Manual hand-operated pneumatic lever valve." },
-            { id: 57, name: "Moisture Separator", sub: "FRL Units", image: "/assets/products/Moisture Separator.jpg.jpeg", description: "Separates moisture from compressed air lines." },
+            { id: 6, name: "Valve Manifold Assembly", sub: "All", image: "https://mekanoengineers.netlify.app/assets/products/valve-manifold.webp", description: "Multi-port manifold assembly for process control." },
+            { id: 48, name: "Solenoid Valve", sub: "Fittings", image: "/assets/products/Solenoid Valve.jpeg", description: "Electrically controlled Solenoid Valve for automated flow." },
+            { id: 81, name: "Hand Lever Hoist", sub: "All", image: "https://mekanoengineers.netlify.app/assets/products/hand-lever.jpeg", description: "Manual hand-lever operated hoist." },
         ]
     },
     {
@@ -70,7 +72,7 @@ export const categories = [
         description: "Engineered sealing solutions to ensure leak-proof industrial operations.",
         products: [
             { id: 14, name: "Spitmaan PTFE Gland Packing", sub: "Packing", image: "https://mekanoengineers.netlify.app/assets/products/ptfe-gland-packing-500x500.jpg", description: "Premium PTFE packing for chemical resistance." },
-            { id: 58, name: "Unik Rubber Sheet", sub: "Gaskets", image: "https://mekanoengineers.netlify.app/assets/products/ptft-thread-seal-tape-500x500.jpg", description: "Durable rubber sheeting for custom gasket cutting." },
+            { id: 58, name: "Teflon Tape", sub: "Tape", image: "https://mekanoengineers.netlify.app/assets/products/ptft-thread-seal-tape-500x500.jpg", description: "Durable Teflon tape for thread sealing." },
             { id: 59, name: "Spitmaan Jointing Sheet", sub: "Gaskets", image: "https://mekanoengineers.netlify.app/assets/products/spitman-jointing-sheets.jpg", description: "High-quality industrial jointing sheets." },
             { id: 15, name: "Non Asbestos Gasket Sheet", sub: "Gaskets", image: "/assets/products/Gasket Sheet Non Asbestos.jpg.jpeg", description: "Eco-friendly Non-Asbestos sheets." },
             { id: 16, name: "Cut Gaskets", sub: "Gaskets", image: "/assets/products/Cut Gaskets.jpg.jpeg", description: "Custom-cut industrial gaskets." },
@@ -92,23 +94,18 @@ export const categories = [
         subCategories: ["All", "Flow Meters", "Transmitters", "Gauges"],
         description: "Precision measurement and monitoring devices for process optimization.",
         products: [
-            { id: 19, name: "Racer SS Reflex Sight Glass", sub: "Gauges", image: "https://mekanoengineers.netlify.app/assets/products/racer-ss-view-sight-glass-500x500.jpg", description: "Sight glass for visual flow monitoring." },
             { id: 68, name: "Racer Water Level Gauge Valve", sub: "Gauges", image: "https://mekanoengineers.netlify.app/assets/products/water-level-gauge-valve-500x500.jpg", description: "Precision level gauge valve." },
             { id: 20, name: "Electromagnetic Flow Meter", sub: "Flow Meters", image: "/assets/products/Electromagnetic Flow Meter.webp", description: "Highly accurate electromagnetic flow meter." },
             { id: 21, name: "Ultrasonic Level Transmitter", sub: "Transmitters", image: "/assets/products/Ultrasonic Level Transmitter.webp", description: "Continuous level measurement." },
             { id: 22, name: "Ultrasonic Water Meter", sub: "Flow Meters", image: "/assets/products/Ultrasonic Water Meter.webp", description: "Non-invasive ultrasonic water meter." },
-            { id: 23, name: "Bronze Sleeve Packed Water Level Gauge", sub: "Gauges", image: "/assets/products/Bronze Sleeve Packed Water Level Gauge.jpg.jpeg", description: "Visual level indicator." },
-            { id: 69, name: "Cast Steel Sleeve Packed Water Level Gauge", sub: "Gauges", image: "/assets/products/Cast Steel Sleeve Packed Water Level Gauge.jpg.jpeg", description: "High-pressure level gauge." },
         ]
     },
     {
         id: "electric-motors",
         name: "Electric Motors",
         subCategories: ["All", "Induction Motors", "Single Phase", "Three Phase"],
-        description: "Authorised dealers of Havells, Siemens & ABB industrial motors.",
+        description: "Authorised dealers of Havells industrial motors.",
         products: [
-            { id: 24, name: "ABB IE3 Motor", sub: "Induction Motors", image: "https://mekanoengineers.netlify.app/assets/products/lv-electric-induction-motors-500x500.jpg", description: "High-efficiency ABB IE3 induction motor." },
-            { id: 70, name: "Siemens SIMOTICS GP", sub: "Induction Motors", image: "https://mekanoengineers.netlify.app/assets/products/single-phase-induction-motor-500x500.jpg", description: "Siemens standard industrial motor." },
             { id: 71, name: "Havells IE2 Motor", sub: "Induction Motors", image: "https://mekanoengineers.netlify.app/assets/products/havells-motors.jpg", description: "Reliable Havells IE2 motor." },
             { id: 25, name: "Three Phase Electric Motor", sub: "Three Phase", image: "/assets/products/Three Phase Electric Motor.jpg.jpeg", description: "Powerful three-phase motor." },
             { id: 72, name: "Induction Motor", sub: "Induction Motors", image: "/assets/products/Induction Motor.jpg.jpeg", description: "Standard AC induction motor." },
@@ -122,8 +119,8 @@ export const categories = [
         description: "Industrial flexible piping and hose solutions for diverse sectors.",
         products: [
             { id: 26, name: "Flexible Industrial Pipe", sub: "Flexible Pipes", image: "/assets/products/Flexible Pipes.jpeg", description: "Industrial grade flexible piping." },
-            { id: 74, name: "Unik Rubber Hose Pipe", sub: "Flexible Pipes", image: "https://mekanoengineers.netlify.app/assets/products/newage-fire-hose-500x500.jpg", description: "Durable rubber hose for fire and industrial use." },
-            { id: 75, name: "SS Braided Flexible Hose", sub: "Flexible Pipes", image: "https://mekanoengineers.netlify.app/assets/products/newage-fire-hose-500x500.jpg", description: "Stainless steel braided flexible hose." },
+            { id: 74, name: "Unik Rubber Hose Pipe", sub: "Flexible Pipes", image: "public/assets/products/flex.jpeg", description: "Durable rubber hose for fire and industrial use." },
+            { id: 75, name: "SS Braided Flexible Hose", sub: "Flexible Pipes", image: "public/assets/products/flex2.jpeg", description: "Stainless steel braided flexible hose." },
         ]
     },
     {
@@ -133,7 +130,7 @@ export const categories = [
         description: "Authorised dealers of Shanthi Gears and Premium Transmissions.",
         products: [
             { id: 27, name: "Helical Gearbox", sub: "Gears", image: "https://mekanoengineers.netlify.app/assets/products/gearbox.jpg", description: "High-efficiency helical gearbox." },
-            { id: 76, name: "Worm Gearbox", sub: "Gears", image: "https://mekanoengineers.netlify.app/assets/products/worm-gear-box-500x500.jpg", description: "Reliable worm gearbox for speed reduction." },
+            { id: 76, name: "Worm Gearbox", sub: "Gears", image: "public/assets/products/Worm.jpg", description: "Reliable worm gearbox for speed reduction." },
             { id: 28, name: "Geared Motor", sub: "Geared Motors", image: "/assets/products/Geared Motor.jpg.jpeg", description: "Integrated geared motor." },
             { id: 29, name: "Industrial Gears", sub: "Gears", image: "/assets/products/Gears.jpg.jpeg", description: "Precision engineered gears." },
             { id: 77, name: "Precision Gears", sub: "Gears", image: "/assets/products/Gears_.jpg.jpeg", description: "Custom machined precision gears." },
@@ -146,8 +143,12 @@ export const categories = [
         description: "High-quality industrial chains and sprockets from Diamond and Racer.",
         products: [
             { id: 30, name: "Diamond Roller Chain", sub: "Chains", image: "https://mekanoengineers.netlify.app/assets/products/diamond-roller-chain-500x500.jpg", description: "Premium Diamond brand roller chain." },
-            { id: 78, name: "Industrial Chain Sprocket", sub: "Sprockets", image: "https://mekanoengineers.netlify.app/assets/products/chain-sprockets.jpg", description: "Standard industrial chain sprocket." },
-            { id: 79, name: "DRP Transmission Chain", sub: "Chains", image: "https://mekanoengineers.netlify.app/assets/products/industrial-chain-sprocket-500x500.jpg", description: "Reliable DRP transmission chain." },
+            { id: 101, name: "Standard Roller Chain", sub: "Chains", image: "/assets/products/chain-1.png", description: "Standard roller chain for industrial applications." },
+            { id: 102, name: "Attachment Chain", sub: "Chains", image: "/assets/products/chain -2.png", description: "Industrial attachment chain." },
+            { id: 103, name: "Extended Pin Chain", sub: "Chains", image: "/assets/products/chain-3.png", description: "Extended pin chain for conveying." },
+            { id: 104, name: "Hollow Pin Chain", sub: "Chains", image: "/assets/products/chain-4.png", description: "Hollow pin chain for diverse industrial needs." },
+            { id: 105, name: "Sprockets for Power Transmission through Roller Chains", sub: "Sprockets", image: "/assets/products/sprockets -1.png", description: "Power transmission sprockets." },
+            { id: 106, name: "Sprockets for Conveyor Chains", sub: "Sprockets", image: "/assets/products/sprockets-2.png", description: "Conveyor chain sprockets." },
         ]
     },
     {
@@ -158,7 +159,6 @@ export const categories = [
         products: [
             { id: 33, name: "Indef Chain Pulley Block", sub: "Pulley Blocks", image: "/assets/products/Chain Hoist.webp", description: "Indef brand manual chain pulley block." },
             { id: 80, name: "Indef Electric Chain Hoist", sub: "Hoists", image: "https://mekanoengineers.netlify.app/assets/products/chain-hoist.webp", description: "Powerful electric chain hoist from Indef." },
-            { id: 81, name: "Hand Lever Hoist", sub: "Hoists", image: "https://mekanoengineers.netlify.app/assets/products/hand-lever.jpeg", description: "Manual hand-lever operated hoist." },
             { id: 34, name: "Manual Chain Pulley Block", sub: "Pulley Blocks", image: "/assets/products/Manual Chain Pulley Block.webp", description: "Classic manual pulley block." },
             { id: 35, name: "Electric Hoist", sub: "Hoists", image: "/assets/products/Electric Hoist.webp", description: "Motorized electric hoist." },
         ]
